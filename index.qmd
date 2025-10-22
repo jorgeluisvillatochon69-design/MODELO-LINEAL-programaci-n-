@@ -6,6 +6,7 @@ format: html
 
 
 # Pasos para analisis de datos 
+
 1. Crear mi diseño experimental => modelo estadistico
 2. Colectar los datos
 3. Importar y verificar los factores
@@ -15,6 +16,7 @@ format: html
 
 
 # Librerias 
+
 ```{r}
 library(tidyverse)
 ```
@@ -30,6 +32,7 @@ library(emmeans)
 ```
 
 # Cargar base de datos 
+
 ```{r}
 library(googlesheets4)
 library(tidyverse)
@@ -50,9 +53,11 @@ str(fb)
 ```
 
 # Modelo 
+
 $$ wue_(tuber) = \mu + bloque + riego +geno + riego*geno + e $$
 
 # Analisis de variancia 
+
 
 ```{r}
 md <- lmer(formula = twue ~ 0 + (1|bloque) + riego*geno
@@ -86,22 +91,28 @@ library(ggplot2)
 library(dplyr)
 
 # Modelo mixto
+
 md <- lmer(twue ~ 0 + (1|bloque) + riego*geno, data = fb)
 
 # ANOVA tipo II o III según interés
+
 library(car)
 Anova(md, type = 3)
 ```
 
 
 ```{r}
+
 # Medias ajustadas para la interacción riego:geno
+
 emm <- emmeans(md, ~ riego:geno)
 
 # Comparación de medias con ajuste de Tukey
+
 comp <- pairs(emm, adjust = "tukey")
 
 # Generación de letras de significancia
+
 letras <- multcomp::cld(emm, adjust = "tukey", Letters = letters)
 ```
 
@@ -111,6 +122,7 @@ letras
 
 ```{r}
 # Limpieza del data frame con letras
+
 letras_df <- letras %>%
   as.data.frame() %>%
   mutate(riego = factor(riego, levels = unique(fb$riego)),
