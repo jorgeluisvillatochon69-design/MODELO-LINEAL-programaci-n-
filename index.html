@@ -134,8 +134,19 @@ window.Quarto = {
 </header>
 
 
-<p>#Pasos para analisis de datos 1. Crear mi diseño experimental =&gt; modelo estadistico 2. Colectar los datos 3. Importar y verificar los factores 4. Analisis de Variancia (aov() o lm()) 5. Comparación de medias 6. Gráfico</p>
-<p>#Librerias</p>
+<section id="pasos-para-analisis-de-datos" class="level1">
+<h1>Pasos para analisis de datos</h1>
+<ol type="1">
+<li>Crear mi diseño experimental =&gt; modelo estadistico</li>
+<li>Colectar los datos</li>
+<li>Importar y verificar los factores</li>
+<li>Analisis de Variancia (aov() o lm())</li>
+<li>Comparación de medias</li>
+<li>Gráfico</li>
+</ol>
+</section>
+<section id="librerias" class="level1">
+<h1>Librerias</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -175,7 +186,9 @@ Caution: You lose important information if you filter this package's results.
 See '? untidy'</code></pre>
 </div>
 </div>
-<p>#Cargar base de datos</p>
+</section>
+<section id="cargar-base-de-datos" class="level1">
+<h1>Cargar base de datos</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -236,7 +249,13 @@ See '? untidy'</code></pre>
  $ lfa    : num [1:150] 2900 2619 7579 2450 5413 ...</code></pre>
 </div>
 </div>
-<p>#Modelo <span class="math display">\[ wue_(tuber) = \mu + bloque + riego +geno + riego*geno + e \]</span> #Analisis de variancia</p>
+</section>
+<section id="modelo" class="level1">
+<h1>Modelo</h1>
+<p><span class="math display">\[ wue_(tuber) = \mu + bloque + riego +geno + riego*geno + e \]</span></p>
+</section>
+<section id="analisis-de-variancia" class="level1">
+<h1>Analisis de variancia</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> twue <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>bloque) <span class="sc">+</span> riego<span class="sc">*</span>geno</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>           , <span class="at">data =</span> fb)</span>
@@ -450,6 +469,7 @@ NOTE: If two or more means share the same grouping symbol,
 </div>
 </div>
 </div>
+</section>
 
 </main>
 <!-- /main column -->
