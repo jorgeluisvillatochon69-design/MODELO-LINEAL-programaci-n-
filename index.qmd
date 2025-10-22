@@ -6,7 +6,6 @@ format: html
 
 
 # Pasos para analisis de datos 
-
 1. Crear mi diseño experimental => modelo estadistico
 2. Colectar los datos
 3. Importar y verificar los factores
@@ -16,7 +15,6 @@ format: html
 
 
 # Librerias 
-
 ```{r}
 library(tidyverse)
 ```
@@ -32,7 +30,6 @@ library(emmeans)
 ```
 
 # Cargar base de datos 
-
 ```{r}
 library(googlesheets4)
 library(tidyverse)
@@ -53,12 +50,9 @@ str(fb)
 ```
 
 # Modelo 
-
 $$ wue_(tuber) = \mu + bloque + riego +geno + riego*geno + e $$
 
 # Analisis de variancia 
-
-
 ```{r}
 md <- lmer(formula = twue ~ 0 + (1|bloque) + riego*geno
            , data = fb)
